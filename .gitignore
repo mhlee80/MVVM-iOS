@@ -1,0 +1,6 @@
+xcuserdata/
+Pods/
+.DS_Store
+MVVM.app.dSYM.zip
+MVVM.ipa
+MVVM.xcodeproj/xcuserdata/
