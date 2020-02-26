@@ -15,16 +15,21 @@ class HelloWorldScreenViewModel: NSObject, HelloWorldScreenViewModelProtocol {
   
   func viewDidLoad() {
     log.info("")
-    refresh()
+    loadMessages()
   }
   
   func refresh() {
+    log.info("")
+    loadMessages()
+  }
+  
+  func loadMessages() {
     var messages = [String]()
     
     for _ in 0..<Int.random(in: 1..<10) {
       messages.append("Hello World")
     }
     
-    return self.messages.onNext(messages)
+    self.messages.onNext(messages)
   }
 }
