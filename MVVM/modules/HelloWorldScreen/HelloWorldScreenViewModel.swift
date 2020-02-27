@@ -26,12 +26,5 @@ class HelloWorldScreenViewModel: NSObject, HelloWorldScreenViewModelProtocol {
   func loadNumber() {
     let n = Int.random(in: 1..<1000)
     self.randomNumber.onNext(n)
-//    var messages = [String]()
-//
-//    for _ in 0..<Int.random(in: 1..<10) {
-//      messages.append("Hello World")
-//    }
-//
-//    self.messages.onNext(messages)
   }
 }

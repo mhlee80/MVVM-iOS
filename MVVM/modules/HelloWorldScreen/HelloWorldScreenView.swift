@@ -60,7 +60,6 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
     }
 
     DispatchQueue.main.async { [weak self] in
-      self?.setupBind()
       self?.viewModel?.viewDidLoad()
     }
   }
