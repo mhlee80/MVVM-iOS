@@ -11,25 +11,27 @@ import RxSwift
 import RxCocoa
 
 class HelloWorldScreenViewModel: NSObject, HelloWorldScreenViewModelProtocol {
-  var messages = PublishSubject<[String]>()
+  var randomNumber = PublishSubject<Int>()
   
   func viewDidLoad() {
     log.info("")
-    loadMessages()
+    loadNumber()
   }
   
   func refresh() {
     log.info("")
-    loadMessages()
+    loadNumber()
   }
   
-  func loadMessages() {
-    var messages = [String]()
-    
-    for _ in 0..<Int.random(in: 1..<10) {
-      messages.append("Hello World")
-    }
-    
-    self.messages.onNext(messages)
+  func loadNumber() {
+    let n = Int.random(in: 1..<1000)
+    self.randomNumber.onNext(n)
+//    var messages = [String]()
+//
+//    for _ in 0..<Int.random(in: 1..<10) {
+//      messages.append("Hello World")
+//    }
+//
+//    self.messages.onNext(messages)
   }
 }

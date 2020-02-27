@@ -18,7 +18,7 @@ protocol HelloWorldScreenViewProtocol {
 }
 
 protocol HelloWorldScreenViewModelProtocol {
-  var messages: PublishSubject<[String]> { get }
+  var randomNumber: PublishSubject<Int> { get }
   func viewDidLoad()
   func refresh()
 }

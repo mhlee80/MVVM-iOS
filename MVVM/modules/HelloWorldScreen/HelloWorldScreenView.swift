@@ -21,16 +21,22 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
     }
   }
       
-  private lazy var tableView: UITableView = {
-    let v = UITableView()
-    v.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-    v.separatorStyle = .none
-    v.refreshControl = refreshControl
+  private lazy var numberLabel: UILabel = {
+    let v = UILabel()
+    v.backgroundColor = .white
+    v.textColor = .black
+    v.font = .systemFont(ofSize: 48)
     return v
   }()
   
-  private lazy var refreshControl: UIRefreshControl = {
-    let v = UIRefreshControl()
+  private lazy var refreshButton: UIButton = {
+    let v = UIButton()
+    v.backgroundColor = .white
+    v.layer.borderWidth = 1
+    v.layer.borderColor = UIColor.black.cgColor
+    v.setTitleColor(.black, for: .normal)
+    v.titleLabel?.font = .systemFont(ofSize: 20)
+    v.setTitle("refresh", for: .normal)
     return v
   }()
   
@@ -40,10 +46,17 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
         
     view.backgroundColor = .white
 
-    view.addSubview(tableView)
+    view.addSubview(numberLabel)
+    view.addSubview(refreshButton)
     
-    tableView.snp.makeConstraints { make in
-      make.top.left.bottom.right.equalTo(view.safeAreaLayoutGuide)
+    numberLabel.snp.makeConstraints { make in
+      make.center.equalToSuperview()
+    }
+
+    refreshButton.snp.makeConstraints { make in
+      make.top.equalTo(numberLabel.snp.bottom).offset(10)
+      make.size.equalTo(CGSize(width: 100, height: 30))
+      make.centerX.equalTo(numberLabel)
     }
 
     DispatchQueue.main.async { [weak self] in
@@ -55,13 +68,12 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
   private func setupBind() {
     disposeBag = DisposeBag()
     
-    viewModel?.messages.asDriver(onErrorJustReturn: []).drive(tableView.rx.items(cellIdentifier: "Cell")) { _, message, cell in
-      cell.textLabel?.text = message
-    }.disposed(by: disposeBag)
+    viewModel?.randomNumber.subscribe(onNext: { [weak self] number in
+      self?.numberLabel.text = "\(number)"
+    }).disposed(by: disposeBag)
     
-    refreshControl.rx.controlEvent(.valueChanged).subscribe(onNext: { [weak self] in
+    refreshButton.rx.tap.subscribe(onNext: { [weak self] in
       self?.viewModel?.refresh()
-      self?.refreshControl.endRefreshing()
     }).disposed(by: disposeBag)
   }
 }
