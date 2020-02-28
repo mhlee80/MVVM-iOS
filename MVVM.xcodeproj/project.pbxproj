@@ -11,6 +11,10 @@
 		823FA1D423EA97C100461C52 /* HelloWorldScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FA1D323EA97C100461C52 /* HelloWorldScreenViewModel.swift */; };
 		823FA1DA23ED3CBF00461C52 /* HelloWorldScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FA1D923ED3CBF00461C52 /* HelloWorldScreenProtocols.swift */; };
 		823FA1DC23ED432C00461C52 /* HelloWorldScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823FA1DB23ED432C00461C52 /* HelloWorldScreenCoordinator.swift */; };
+		826EAAE124089A12008F31B5 /* RandomNumberScreenProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826EAADD24089A11008F31B5 /* RandomNumberScreenProtocols.swift */; };
+		826EAAE224089A12008F31B5 /* RandomNumberScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826EAADE24089A11008F31B5 /* RandomNumberScreenCoordinator.swift */; };
+		826EAAE324089A12008F31B5 /* RandomNumberScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826EAADF24089A11008F31B5 /* RandomNumberScreenViewModel.swift */; };
+		826EAAE424089A12008F31B5 /* RandomNumberScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826EAAE024089A12008F31B5 /* RandomNumberScreenView.swift */; };
 		8297BD0B23EA8879003E10B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297BD0A23EA8879003E10B5 /* AppDelegate.swift */; };
 		8297BD0D23EA8879003E10B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297BD0C23EA8879003E10B5 /* SceneDelegate.swift */; };
 		8297BD1423EA887B003E10B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8297BD1323EA887B003E10B5 /* Assets.xcassets */; };
@@ -25,6 +29,10 @@
 		823FA1D323EA97C100461C52 /* HelloWorldScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldScreenViewModel.swift; sourceTree = "<group>"; };
 		823FA1D923ED3CBF00461C52 /* HelloWorldScreenProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldScreenProtocols.swift; sourceTree = "<group>"; };
 		823FA1DB23ED432C00461C52 /* HelloWorldScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloWorldScreenCoordinator.swift; sourceTree = "<group>"; };
+		826EAADD24089A11008F31B5 /* RandomNumberScreenProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberScreenProtocols.swift; sourceTree = "<group>"; };
+		826EAADE24089A11008F31B5 /* RandomNumberScreenCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberScreenCoordinator.swift; sourceTree = "<group>"; };
+		826EAADF24089A11008F31B5 /* RandomNumberScreenViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberScreenViewModel.swift; sourceTree = "<group>"; };
+		826EAAE024089A12008F31B5 /* RandomNumberScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomNumberScreenView.swift; sourceTree = "<group>"; };
 		8297BD0723EA8879003E10B5 /* MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8297BD0A23EA8879003E10B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8297BD0C23EA8879003E10B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,8 +86,20 @@
 			isa = PBXGroup;
 			children = (
 				823FA1C923EA94C900461C52 /* HelloWorldScreen */,
+				826EAADC2408986D008F31B5 /* RandomNumberScreen */,
 			);
 			path = modules;
+			sourceTree = "<group>";
+		};
+		826EAADC2408986D008F31B5 /* RandomNumberScreen */ = {
+			isa = PBXGroup;
+			children = (
+				826EAADD24089A11008F31B5 /* RandomNumberScreenProtocols.swift */,
+				826EAADE24089A11008F31B5 /* RandomNumberScreenCoordinator.swift */,
+				826EAAE024089A12008F31B5 /* RandomNumberScreenView.swift */,
+				826EAADF24089A11008F31B5 /* RandomNumberScreenViewModel.swift */,
+			);
+			path = RandomNumberScreen;
 			sourceTree = "<group>";
 		};
 		8297BCFE23EA8879003E10B5 = {
@@ -231,8 +251,12 @@
 				8297BD0B23EA8879003E10B5 /* AppDelegate.swift in Sources */,
 				823FA1D423EA97C100461C52 /* HelloWorldScreenViewModel.swift in Sources */,
 				823FA1DA23ED3CBF00461C52 /* HelloWorldScreenProtocols.swift in Sources */,
+				826EAAE424089A12008F31B5 /* RandomNumberScreenView.swift in Sources */,
+				826EAAE224089A12008F31B5 /* RandomNumberScreenCoordinator.swift in Sources */,
+				826EAAE124089A12008F31B5 /* RandomNumberScreenProtocols.swift in Sources */,
 				823FA1D223EA97B600461C52 /* HelloWorldScreenView.swift in Sources */,
 				8297BD0D23EA8879003E10B5 /* SceneDelegate.swift in Sources */,
+				826EAAE324089A12008F31B5 /* RandomNumberScreenViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,20 +11,13 @@ import RxSwift
 import RxCocoa
 
 class HelloWorldScreenViewModel: NSObject, HelloWorldScreenViewModelProtocol {
-  var randomNumber = PublishSubject<Int>()
+  var coordinator: HelloWorldScreenCoordinatorProtocol?
   
   func viewDidLoad() {
     log.info("")
-    loadNumber()
   }
   
-  func refresh() {
-    log.info("")
-    loadNumber()
-  }
-  
-  func loadNumber() {
-    let n = Int.random(in: 1..<1000)
-    self.randomNumber.onNext(n)
+  func presentRandomNumberScreenFrom(_ view: HelloWorldScreenViewProtocol) {
+    coordinator?.presentRandomNumberScreenFrom(view)
   }
 }

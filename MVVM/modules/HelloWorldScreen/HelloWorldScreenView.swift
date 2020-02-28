@@ -21,22 +21,23 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
     }
   }
       
-  private lazy var numberLabel: UILabel = {
+  private lazy var textLabel: UILabel = {
     let v = UILabel()
     v.backgroundColor = .white
     v.textColor = .black
     v.font = .systemFont(ofSize: 48)
+    v.text = "Hello World"
     return v
   }()
-  
-  private lazy var refreshButton: UIButton = {
+    
+  private lazy var presentButton: UIButton = {
     let v = UIButton()
     v.backgroundColor = .white
     v.layer.borderWidth = 1
     v.layer.borderColor = UIColor.black.cgColor
     v.setTitleColor(.black, for: .normal)
     v.titleLabel?.font = .systemFont(ofSize: 20)
-    v.setTitle("refresh", for: .normal)
+    v.setTitle("present random number", for: .normal)
     return v
   }()
   
@@ -46,19 +47,19 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
         
     view.backgroundColor = .white
 
-    view.addSubview(numberLabel)
-    view.addSubview(refreshButton)
+    view.addSubview(textLabel)
+    view.addSubview(presentButton)
     
-    numberLabel.snp.makeConstraints { make in
+    textLabel.snp.makeConstraints { make in
       make.center.equalToSuperview()
     }
 
-    refreshButton.snp.makeConstraints { make in
-      make.top.equalTo(numberLabel.snp.bottom).offset(10)
-      make.size.equalTo(CGSize(width: 100, height: 30))
-      make.centerX.equalTo(numberLabel)
+    presentButton.snp.makeConstraints { make in
+      make.top.equalTo(textLabel.snp.bottom).offset(10)
+      make.size.equalTo(CGSize(width: 250, height: 30))
+      make.centerX.equalTo(textLabel)
     }
-
+    
     DispatchQueue.main.async { [weak self] in
       self?.viewModel?.viewDidLoad()
     }
@@ -66,13 +67,9 @@ class HelloWorldScreenView: UIViewController, HelloWorldScreenViewProtocol {
   
   private func setupBind() {
     disposeBag = DisposeBag()
-    
-    viewModel?.randomNumber.subscribe(onNext: { [weak self] number in
-      self?.numberLabel.text = "\(number)"
-    }).disposed(by: disposeBag)
-    
-    refreshButton.rx.tap.subscribe(onNext: { [weak self] in
-      self?.viewModel?.refresh()
+        
+    presentButton.rx.tap.subscribe(onNext: { [weak self] in
+        self?.viewModel?.presentRandomNumberScreenFrom(self!)
     }).disposed(by: disposeBag)
   }
 }

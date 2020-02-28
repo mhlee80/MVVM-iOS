@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 
 protocol HelloWorldScreenCoordinatorProtocol {
-  static func createModule() -> UIViewController & HelloWorldScreenViewProtocol
+  static func createModule() -> HelloWorldScreenViewProtocol
+  
+  func presentRandomNumberScreenFrom(_ view: HelloWorldScreenViewProtocol)
 }
 
 protocol HelloWorldScreenViewProtocol {
@@ -18,7 +20,8 @@ protocol HelloWorldScreenViewProtocol {
 }
 
 protocol HelloWorldScreenViewModelProtocol {
-  var randomNumber: PublishSubject<Int> { get }
+  var coordinator: HelloWorldScreenCoordinatorProtocol? { get set }
+
   func viewDidLoad()
-  func refresh()
+  func presentRandomNumberScreenFrom(_ view: HelloWorldScreenViewProtocol)
 }
